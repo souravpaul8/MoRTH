@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1017382709999",
+    "firebase_url": "https://morth-2769f.firebaseio.com",
+    "project_id": "morth-2769f",
+    "storage_bucket": "morth-2769f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017382709999:android:7409c15ed93799a3",
+        "android_client_info": {
+          "package_name": "com.thecombatant.morth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017382709999-r534r49eqh12fev7saurpai184vbd8ra.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thecombatant.morth",
+            "certificate_hash": "b43063ef556b6c22e0d0d323f8a76e780520fb47"
+          }
+        },
+        {
+          "client_id": "1017382709999-97i8buhmupdtf6j2s7bnfch9s27d4qpo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArI-Y9YPLY_aCNzoZCOvi-nhG49D-tZgs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017382709999-97i8buhmupdtf6j2s7bnfch9s27d4qpo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00AFF0"
+    android:orientation="vertical"
+    tools:context=".EnterTenderIDActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/enterTenderID"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="100pt"
+        android:layout_marginBottom="31dp"
+        android:text="Tender ID"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
+
+
+    <EditText
+        android:id="@+id/enterTenderID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/custom_linear_layout_border"
+        android:hint="Enter Tender ID"
+        android:paddingLeft="64dp"
+        android:paddingRight="64dp"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/buttonGo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/custom_linear_layout_border"
+        android:text="Go"
+        android:textColor="#000000" />
+
+</LinearLayout>

@@ -1,3 +1,64 @@
 <resources>
     <string name="app_name">MoRTH</string>
+    <string-array name="year">
+        <item name="">2000</item>
+        <item name="">2001</item>
+        <item name="">2002</item>
+        <item name="">2003</item>
+        <item name="">2004</item>
+        <item name="">2005</item>
+        <item name="">2006</item>
+    </string-array>
+    <string-array name="month">
+        <item name="">January</item>
+        <item name="">February</item>
+        <item name="">March</item>
+        <item name="">April</item>
+        <item name="">May</item>
+        <item name="">june</item>
+        <item name="">July</item>
+        <item name="">August</item>
+        <item name="">September</item>
+        <item name="">October</item>
+        <item name="">November</item>
+        <item name="">December</item>
+    </string-array>
+    <string-array name="date">
+        <item name="">1</item>
+        <item name="">2</item>
+        <item name="">3</item>
+        <item name="">4</item>
+        <item name="">5</item>
+        <item name="">28</item>
+    </string-array>
+    <string-array name="date1">
+        <item name="">1</item>
+        <item name="">2</item>
+        <item name="">3</item>
+        <item name="">4</item>
+        <item name="">5</item>
+        <item name="">29</item>
+    </string-array>
+    <string-array name="date2">
+        <item name="">1</item>
+        <item name="">2</item>
+        <item name="">3</item>
+        <item name="">4</item>
+        <item name="">5</item>
+        <item name="">30</item>
+    </string-array>
+    <string-array name="date3">
+        <item name="">1</item>
+        <item name="">2</item>
+        <item name="">3</item>
+        <item name="">4</item>
+        <item name="">5</item>
+        <item name="">31</item>
+    </string-array>
+    <string-array name="Causes">
+        <item>Rain</item>
+        <item>Wind</item>
+        <item>Flood</item>
+        <item>Others</item>
+    </string-array>
 </resources>
