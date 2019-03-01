@@ -79,7 +79,7 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
                 Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
+                int day =  cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
                         EnterTenderDetailsActivity.this,
