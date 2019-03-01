@@ -120,6 +120,12 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
     TextView Select_file;
 
 
+    String tender;
+    String startdateofProject;
+    String enddateofProject;
+
+
+
     //for date
     private UploadListAdapter uploadListAdapter;
     private StorageReference mStorage;
@@ -139,7 +145,17 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         othercauses = findViewById(R.id.reason);
         //x = findViewById(R.id.x);
 
+
+        //for tenderid and project details
+        tender = getIntent().getStringExtra("Tender_01");
+        startdateofProject = getIntent().getStringExtra("startdateProject");
+        enddateofProject = getIntent().getStringExtra("enddateProject");
+
+
         FirebaseApp.initializeApp(this);
+        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference(tender);
+        databaseweather.child("Start date of project").setValue(startdateofProject);
+        databaseweather.child("end date of project").setValue(enddateofProject);
 
         mStorage = FirebaseStorage.getInstance().getReference();
 
@@ -339,6 +355,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
 
 
+
                 if (text.equals("Rain")) {
 
 
@@ -481,7 +498,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
       //  String tender=tenderId;
 
-        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference("Tender 01");
+        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference(tender);
 
 
         String content;
@@ -491,7 +508,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
             content = weather.execute("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=168c1c9492f0485c9c440414192602&q=" + latLngString + "&format=json&date=" + sdate + "&enddate=" + edate + "&tp=12").get();
 
             //Toast.makeText(WeatherHindranceActivity.this, "Rain", Toast.LENGTH_SHORT).show();
-            //Log.d("hitesh", content);
+
 
             //JSON
 
@@ -517,17 +534,13 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
                 String cause = "Rain";
 
 
-                //Log.d("sourav", cdate);
-
                 if (rainfall > 0.0) {
 
                     String id = databaseweather.push().getKey();
 
                     weather weath = new weather(id, cdate, rainfall, cause, result);
 
-                    databaseweather.child("Reason").child(cdate).setValue(weath);
-
-
+                    databaseweather.child("Dates").child(cdate).setValue(weath);
 
 
                 }
@@ -551,7 +564,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         String edate = enddate.getText().toString();
 
 
-        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference("Tender 01");
+        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference(tender);
 
 
         String content;
@@ -590,7 +603,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
                     Wind weath = new Wind(id, cdate, datap, cause, result);
 
-                    databaseweather.child(cdate).setValue(weath);
+                    databaseweather.child("Dates").child(cdate).setValue(weath);
 
                 }
 
@@ -612,7 +625,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
         String edate = enddate.getText().toString();
 
-        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference("Tender 01");
+        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference(tender);
 
 
         String content;
@@ -677,7 +690,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
         Ext=days;
         //Toast.makeText(WeatherHindranceActivity.this, Ext, Toast.LENGTH_SHORT).show();
-        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference("Tender 01");
+        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference(tender);
         databaseweather.child("Extension date").setValue(Ext);
     }
 

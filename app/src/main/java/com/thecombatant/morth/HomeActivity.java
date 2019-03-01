@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -15,13 +16,21 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        final String tender = getIntent().getStringExtra("Tender_01");
+        final String startdateofProject = getIntent().getStringExtra("startdateProject");
+        final String enddateofProject = getIntent().getStringExtra("enddateProject");
+
         WeatherRelatedHindrances = findViewById(R.id.weatherRelatedHindrances);
 
         WeatherRelatedHindrances.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+
                 Intent i = new Intent(HomeActivity.this, WeatherHindranceActivity.class);
+                i.putExtra("Tender_01", tender);
+                i.putExtra("startdateProject", startdateofProject);
+                i.putExtra("enddateProject", enddateofProject);
                 startActivity(i);
             }
         });

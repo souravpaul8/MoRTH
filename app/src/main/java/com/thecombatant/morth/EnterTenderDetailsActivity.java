@@ -25,6 +25,7 @@ import java.util.Calendar;
 public class EnterTenderDetailsActivity extends AppCompatActivity {
 
     Button next;
+    TextView tenderIdTextView;
     EditText TenderId;
     TextView StartDateofpro;
     TextView EndDateofpro;
@@ -47,8 +48,14 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
         StartDateofpro=findViewById(R.id.startDate);
         EndDateofpro=findViewById(R.id.enddate);
         next=findViewById(R.id.nextHome);
+        tenderIdTextView = findViewById(R.id.TenderIdtextView);
 
         GetTenderId=TenderId.getText().toString();
+
+        final String tender = getIntent().getStringExtra("Tender_ID");
+        tenderIdTextView.setText(tender);
+
+
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,12 +64,11 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
                  ProjectStart=StartDateofpro.getText().toString();
                  ProjectEnd=EndDateofpro.getText().toString();
 
-                DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference("Tender 01");
-                databaseweather.child("Start date").setValue(ProjectStart);
-                databaseweather.child("Enddate").setValue(ProjectEnd);
-
 
                 Intent intent=new Intent(EnterTenderDetailsActivity.this,HomeActivity.class);
+                intent.putExtra("Tender_01", tender);
+                intent.putExtra("startdateProject", ProjectStart);
+                intent.putExtra("enddateProject", ProjectEnd);
                 startActivity(intent);
                 //Toast.makeText(EnterTenderDetailsActivity.this, ProjectStart, Toast.LENGTH_SHORT).show();
 

@@ -34,12 +34,11 @@ public class EnterTenderIDActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 tenderId=enterTenderId.getText().toString();
-                DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference(tenderId);
-                databaseweather.child("Tender 01").setValue("Tender 01");
                Intent i = new Intent(EnterTenderIDActivity.this, EnterTenderDetailsActivity.class);
+                i.putExtra("Tender_ID", tenderId);
                startActivity(i);
 
-                Toast.makeText(EnterTenderIDActivity.this,getName(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(EnterTenderIDActivity.this,getName(), Toast.LENGTH_SHORT).show();
 
 
             }
@@ -47,8 +46,5 @@ public class EnterTenderIDActivity extends AppCompatActivity {
 
     }
 
-    public String getName()
-    {
-        return tenderId;
-    }
+
 }
