@@ -30,7 +30,6 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
     TextView EndDateofpro;
     String GetTenderId;
     String Prodate;
-
     String ProjectStart;
     String ProjectEnd;
 
