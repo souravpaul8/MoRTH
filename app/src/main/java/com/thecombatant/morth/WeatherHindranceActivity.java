@@ -84,17 +84,20 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import javax.xml.transform.Result;
 
-public class WeatherHindranceActivity extends AppCompatActivity {
+
+public class WeatherHindranceActivity extends AppCompatActivity implements Dialog_box.ExampleDialog {
 
 
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     private static final int RESULT_LOAD_IMAGE = 1;
     public String text;
     Button getLocation, save;
+    Button extension;
     TextView city;
     TextView date;
-    EditText reason;
+    EditText othercauses;
     TextView enddate;
     String mdate;
     TextView textView1, textView2, textView3;
@@ -105,13 +108,16 @@ public class WeatherHindranceActivity extends AppCompatActivity {
     double latitude;
     String latLngString;
     //Button x;
+    String Ext;
     String result;
+    String otherReason;
     DatePickerDialog.OnDateSetListener startDateset;
     DatePickerDialog.OnDateSetListener endDateset;
     private ImageButton mSelectBtn;
     private RecyclerView mUploadList;
     private List<String> fileNameList;
     private List<String> fileDoneList;
+    TextView Select_file;
 
 
     //for date
@@ -126,10 +132,11 @@ public class WeatherHindranceActivity extends AppCompatActivity {
 
         getLocation = findViewById(R.id.getLocation);
         save = findViewById(R.id.save);
+        extension=findViewById(R.id.Extension);
         city = findViewById(R.id.location);
         date = findViewById(R.id.date);
         enddate = findViewById(R.id.enddate);
-        reason = findViewById(R.id.reason);
+        othercauses = findViewById(R.id.reason);
         //x = findViewById(R.id.x);
 
         FirebaseApp.initializeApp(this);
@@ -138,6 +145,7 @@ public class WeatherHindranceActivity extends AppCompatActivity {
 
         mSelectBtn = findViewById(R.id.select_btn);
         mUploadList = findViewById(R.id.upload_list);
+        Select_file=findViewById(R.id.select_file);
 
         fileNameList = new ArrayList<>();
         fileDoneList = new ArrayList<>();
@@ -305,9 +313,15 @@ public class WeatherHindranceActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 text = parent.getItemAtPosition(position).toString();
                 if (text.equals("Others")) {
-                    reason.setVisibility(view.VISIBLE);   //for other reasons
+                    othercauses.setVisibility(view.VISIBLE);    //for other reasons
+                    mSelectBtn.setVisibility(view.VISIBLE);
+                    Select_file.setVisibility(view.VISIBLE);
+                    mUploadList.setVisibility(view.VISIBLE);
                 } else {
-                    reason.setVisibility(view.INVISIBLE);
+                    mSelectBtn.setVisibility(view.INVISIBLE);
+                    othercauses.setVisibility(view.GONE);
+                    Select_file.setVisibility(view.GONE);
+                    mUploadList.setVisibility(view.GONE);
                 }
             }
 
@@ -322,7 +336,7 @@ public class WeatherHindranceActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Reason = reason.getText().toString();
+
 
 
                 if (text.equals("Rain")) {
@@ -333,10 +347,19 @@ public class WeatherHindranceActivity extends AppCompatActivity {
 
                     searchwind();
                 }
+                else if(text.equals("Others")){
+                    otherCauseDetail();
+                }
 
             }
         });
 
+       extension.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               openDialog();
+           }
+       });
 
     }
 
@@ -449,12 +472,14 @@ public class WeatherHindranceActivity extends AppCompatActivity {
     }
 
     public void searchrain() {
-        String cname = city.getText().toString();
 
         String sdate = date.getText().toString();
 
         String edate = enddate.getText().toString();
 
+      //  EnterTenderIDActivity ob=new EnterTenderIDActivity();
+
+      //  String tender=tenderId;
 
         DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference("Tender 01");
 
@@ -466,7 +491,7 @@ public class WeatherHindranceActivity extends AppCompatActivity {
             content = weather.execute("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=168c1c9492f0485c9c440414192602&q=" + latLngString + "&format=json&date=" + sdate + "&enddate=" + edate + "&tp=12").get();
 
             //Toast.makeText(WeatherHindranceActivity.this, "Rain", Toast.LENGTH_SHORT).show();
-            Log.d("hitesh", content);
+            //Log.d("hitesh", content);
 
             //JSON
 
@@ -484,7 +509,7 @@ public class WeatherHindranceActivity extends AppCompatActivity {
 
                 JSONObject job = jo.getJSONObject(0);
 
-                double dataparse = job.getDouble("precipMM");
+                double rainfall = job.getDouble("precipMM");
 
 
                 String cdate = b.getString("date");
@@ -492,15 +517,17 @@ public class WeatherHindranceActivity extends AppCompatActivity {
                 String cause = "Rain";
 
 
-                Log.d("sourav", cdate);
+                //Log.d("sourav", cdate);
 
-                if (dataparse > 0.0) {
+                if (rainfall > 0.0) {
 
                     String id = databaseweather.push().getKey();
 
-                    weather weath = new weather(id, cdate, dataparse, cause, result);
+                    weather weath = new weather(id, cdate, rainfall, cause, result);
 
-                    databaseweather.child(cdate).setValue(weath);
+                    databaseweather.child("Reason").child(cdate).setValue(weath);
+
+
 
 
                 }
@@ -517,57 +544,14 @@ public class WeatherHindranceActivity extends AppCompatActivity {
     }
 
 
-
-    /*public class Weather extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... address) {
-
-            try {
-                URL url = new URL(address[0]);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-                connection.connect();
-
-                InputStream is = connection.getInputStream();
-
-                InputStreamReader isr = new InputStreamReader(is);
-
-                int data = isr.read();
-                String content = "";
-                char ch;
-
-                while (data != -1) {
-                    ch = (char) data;
-                    content = content + ch;
-                    data = isr.read();
-
-                }
-
-                return content;
-
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-            return null;
-        }
-    }
-*/
-
     public void searchwind() {
-        String cname = city.getText().toString();
 
         String sdate = date.getText().toString();
 
         String edate = enddate.getText().toString();
 
 
-        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference("weather");
+        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference("Tender 01");
 
 
         String content;
@@ -604,7 +588,7 @@ public class WeatherHindranceActivity extends AppCompatActivity {
 
                     String id = databaseweather.push().getKey();
 
-                    Wind weath = new Wind(id, cdate, datap, cause);
+                    Wind weath = new Wind(id, cdate, datap, cause, result);
 
                     databaseweather.child(cdate).setValue(weath);
 
@@ -617,6 +601,84 @@ public class WeatherHindranceActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public void otherCauseDetail(){
+
+       otherReason=othercauses.getText().toString();
+
+
+        String sdate = date.getText().toString();
+
+        String edate = enddate.getText().toString();
+
+        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference("Tender 01");
+
+
+        String content;
+        Hindrance weather = new Hindrance();
+
+        try {
+            content = weather.execute("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=168c1c9492f0485c9c440414192602&q=" + latLngString + "&format=json&date=" + sdate + "&enddate=" + edate + "&tp=12").get();
+
+            //Toast.makeText(WeatherHindranceActivity.this, "Rain", Toast.LENGTH_SHORT).show();
+            //Log.d("hitesh", content);
+
+            //JSON
+
+            JSONObject jobj = new JSONObject(content);
+
+            JSONObject j = jobj.getJSONObject("data");
+
+            JSONArray o = j.getJSONArray("weather");
+
+            for (int i = 0; i < o.length(); i++) {
+
+                JSONObject b = o.getJSONObject(i);
+
+
+
+                String cdate = b.getString("date");
+
+
+
+                //Log.d("sourav", cdate);
+
+
+
+                    String id = databaseweather.push().getKey();
+
+                    OtherReasonDetails other=new OtherReasonDetails(id,cdate,otherReason,result);
+
+                    databaseweather.child("Reason").child(cdate).setValue(other);
+
+
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+    public void openDialog(){
+
+        Dialog_box dialog_box=new Dialog_box();
+        dialog_box.show(getSupportFragmentManager(),"dialog");
+
+    }
+
+    @Override
+    public void applyText(String days) {
+
+        Ext=days;
+        //Toast.makeText(WeatherHindranceActivity.this, Ext, Toast.LENGTH_SHORT).show();
+        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference("Tender 01");
+        databaseweather.child("Extension date").setValue(Ext);
     }
 
     class Hindrance extends AsyncTask<String, Void, String> {

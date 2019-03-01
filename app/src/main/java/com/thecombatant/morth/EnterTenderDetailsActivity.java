@@ -1,114 +1,147 @@
 package com.thecombatant.morth;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Calendar;
+
 public class EnterTenderDetailsActivity extends AppCompatActivity {
-    public int j;
-    Spinner spinner1;
-    Spinner spinner2;
-    Spinner spinner3;
-    Spinner spinner4;
-    Spinner spinner5;
-    Spinner spinner6;
-    Button nextHome;
+
+    Button next;
+    EditText TenderId;
+    TextView StartDateofpro;
+    TextView EndDateofpro;
+    String GetTenderId;
+    String Prodate;
+
+    String ProjectStart;
+    String ProjectEnd;
+
+    DatePickerDialog.OnDateSetListener startDateProject;
+    DatePickerDialog.OnDateSetListener endDateProject;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_tender_details);
-        spinner1 = (Spinner) findViewById(R.id.spinner);
-        spinner2 = (Spinner) findViewById(R.id.spinner2);
-        spinner3 = (Spinner) findViewById(R.id.spinner3);
-        spinner4 = (Spinner) findViewById(R.id.spinner4);
-        spinner5 = (Spinner) findViewById(R.id.spinner5);
-        spinner6 = (Spinner) findViewById(R.id.spinner6);
-        nextHome = findViewById(R.id.nextHome);
 
-        nextHome.setOnClickListener(new View.OnClickListener() {
+        TenderId=findViewById(R.id.tenderId);
+        StartDateofpro=findViewById(R.id.startDate);
+        EndDateofpro=findViewById(R.id.enddate);
+        next=findViewById(R.id.nextHome);
+
+        GetTenderId=TenderId.getText().toString();
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                 ProjectStart=StartDateofpro.getText().toString();
+                 ProjectEnd=EndDateofpro.getText().toString();
+
+                DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference("Tender 01");
+                databaseweather.child("Start date").setValue(ProjectStart);
+                databaseweather.child("Enddate").setValue(ProjectEnd);
+
+
+                Intent intent=new Intent(EnterTenderDetailsActivity.this,HomeActivity.class);
+                startActivity(intent);
+                //Toast.makeText(EnterTenderDetailsActivity.this, ProjectStart, Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+
+
+
+        StartDateofpro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(EnterTenderDetailsActivity.this, HomeActivity.class);
-                startActivity(i);
-            }
-        });
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.year, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner1.setAdapter(adapter);
+                DatePickerDialog dialog = new DatePickerDialog(
+                        EnterTenderDetailsActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth, startDateProject,
+                        year, month, day);
 
-
-        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.year, android.R.layout.simple_spinner_item);
-        adapter3.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner4.setAdapter(adapter3);
-        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this, R.array.month, android.R.layout.simple_spinner_item);
-        adapter4.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner5.setAdapter(adapter4);
-        ArrayAdapter<CharSequence> adapter5 = ArrayAdapter.createFromResource(this, R.array.date, android.R.layout.simple_spinner_item);
-        adapter5.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner6.setAdapter(adapter5);
-        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String text = parent.getItemAtPosition(position).toString();
-                j = Integer.parseInt(text);
-                ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(EnterTenderDetailsActivity.this, R.array.month, android.R.layout.simple_spinner_item);
-                adapter1.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-                spinner2.setAdapter(adapter1);
-                spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        if (position == 1) {
-                            if (j % 400 == 0) {
-                                ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(EnterTenderDetailsActivity.this, R.array.date1, android.R.layout.simple_spinner_item);
-                                adapter2.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-                                spinner3.setAdapter(adapter2);
-                            } else {
-                                ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(EnterTenderDetailsActivity.this, R.array.date, android.R.layout.simple_spinner_item);
-                                adapter2.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-                                spinner3.setAdapter(adapter2);
-                            }
-                        } else {
-                            if (position == 7) {
-                                ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(EnterTenderDetailsActivity.this, R.array.date3, android.R.layout.simple_spinner_item);
-                                adapter2.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-                                spinner3.setAdapter(adapter2);
-                            }
-                            if (position % 2 == 0) {
-                                ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(EnterTenderDetailsActivity.this, R.array.date3, android.R.layout.simple_spinner_item);
-                                adapter2.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-                                spinner3.setAdapter(adapter2);
-                            }
-                            if (position % 2 != 0 && position != 7) {
-                                ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(EnterTenderDetailsActivity.this, R.array.date2, android.R.layout.simple_spinner_item);
-                                adapter2.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-                                spinner3.setAdapter(adapter2);
-                            }
-                        }
-
-                    }
-
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-                Toast.makeText(EnterTenderDetailsActivity.this, text + " " + "is selected", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
 
             }
         });
+
+        EndDateofpro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cale = Calendar.getInstance();
+                int year = cale.get(Calendar.YEAR);
+                int month = cale.get(Calendar.MONTH);
+                int day = cale.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        EnterTenderDetailsActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth, endDateProject,
+                        year, month, day);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+            }
+        });
+
+
+        startDateProject = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+                Log.d("ondate", year + "/" + month + "/" + dayOfMonth);
+                Prodate = year + "-" + month + "-" + dayOfMonth;
+                StartDateofpro.setText(Prodate);
+
+
+            }
+        };
+
+
+        endDateProject = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+                Log.d("ondate", year + "/" + month + "/" + dayOfMonth);
+                Prodate = year + "-" + month + "-" + dayOfMonth;
+                EndDateofpro.setText(Prodate);
+
+            }
+        };
+
+
+
 
     }
+
+
+
 }

@@ -7,11 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class EnterTenderIDActivity extends AppCompatActivity {
 
     Button buttonGO;
     EditText enterTenderId;
+    String tenderId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,19 +24,31 @@ public class EnterTenderIDActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enter_tender_id);
 
         buttonGO = findViewById(R.id.buttonGo);
-        enterTenderId = findViewById(R.id.enterTenderID);
+        enterTenderId = (EditText) findViewById(R.id.enterTenderID);
 
-        String tenderId = enterTenderId.getText().toString();
+
 
 
         buttonGO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(EnterTenderIDActivity.this, EnterTenderDetailsActivity.class);
-                startActivity(i);
+                tenderId=enterTenderId.getText().toString();
+                DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference(tenderId);
+                databaseweather.child("Tender 01").setValue("Tender 01");
+               Intent i = new Intent(EnterTenderIDActivity.this, EnterTenderDetailsActivity.class);
+               startActivity(i);
+
+                Toast.makeText(EnterTenderIDActivity.this,getName(), Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
+    }
+
+    public String getName()
+    {
+        return tenderId;
     }
 }

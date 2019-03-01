@@ -35,7 +35,8 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Your Location"
-                android:textSize="16sp" />
+                android:paddingLeft="40dp"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/getLocation"
@@ -72,8 +73,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:gravity="center"
-
-
                 android:hint="end date"
                 android:inputType="textPersonName"
                 android:text="End Date"
@@ -105,12 +104,14 @@
             android:visibility="invisible" />
 
         <TextView
+            android:id="@+id/select_file"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="16dp"
             android:text="Select Files"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:visibility="visible" />
 
         <ImageButton
             android:id="@+id/select_btn"
@@ -141,6 +142,17 @@
             android:layout_gravity="center"
             android:layout_marginTop="90dp"
             android:text="save" />
+
+        <Button
+            android:id="@+id/Extension"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:text="Extension" />
 
 
     </LinearLayout>
