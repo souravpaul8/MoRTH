@@ -693,7 +693,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
                 connection.connect();
 
-                InputStream is = connection.getInputStream();
+                InputStream is =  connection.getInputStream();
 
                 InputStreamReader isr = new InputStreamReader(is);
 
