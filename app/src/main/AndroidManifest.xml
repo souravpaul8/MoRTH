@@ -8,16 +8,20 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/morth"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/morth"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".SavedHindrancesListActivity"></activity>
         <activity android:name=".OtherUploadActivity" />
-        <activity android:name=".WeatherHindranceActivity" />
-        <activity android:name=".EnterTenderDetailsActivity" />
+        <activity
+            android:name=".WeatherHindranceActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".EnterTenderDetailsActivity"
+            android:parentActivityName=".EnterTenderIDActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".EnterTenderIDActivity" />
         <activity android:name=".MainActivity">

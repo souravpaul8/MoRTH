@@ -139,6 +139,8 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_hindrance);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         getLocation = findViewById(R.id.getLocation);
         save = findViewById(R.id.save);

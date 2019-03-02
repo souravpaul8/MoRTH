@@ -8,6 +8,18 @@
     android:orientation="vertical"
     tools:context=".EnterTenderIDActivity">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="212dp"
+        android:layout_height="182dp"
+        android:layout_above="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        app:srcCompat="@drawable/morth" />
+
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -15,8 +27,8 @@
         android:layout_above="@+id/enterTenderID"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
         android:layout_gravity="center"
-        android:layout_marginTop="100pt"
         android:layout_marginBottom="31dp"
         android:text="Tender ID"
         android:textColor="#FFFFFF"
@@ -42,9 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/custom_linear_layout_border"
-        android:text="Go"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
+        android:text="Go"
         android:textColor="#000000" />
-
 </LinearLayout>
