@@ -2,7 +2,7 @@ package com.thecombatant.morth;
 
 public class Wind {
 
-    String id;
+    String location;
     String date;
     int wind;
     String cause;
@@ -12,16 +12,16 @@ public class Wind {
 
     }
 
-    public Wind(String id, String date, int wind, String cause, String locality) {
-        this.id = id;
+    public Wind(String location, String date, int wind, String cause, String locality) {
+        this.location = location;
         this.date = date;
         this.wind = wind;
         this.cause = cause;
         this.locality = locality;
     }
 
-    public String getId() {
-        return id;
+    public String getLocation() {
+        return location;
     }
 
     public String getDate() {

@@ -2,7 +2,7 @@ package com.thecombatant.morth;
 
 public class OtherReasonDetails {
 
-    String id;
+    String location;
     String date;
     String cause;
     String locality;
@@ -12,16 +12,17 @@ public class OtherReasonDetails {
 
     }
 
-    public OtherReasonDetails(String id, String date, String cause, String locality, String imageUrl) {
-        this.id = id;
+    public OtherReasonDetails(String location, String date, String cause, String locality, String imageUrl) {
+        this.location = location;
         this.date = date;
         this.cause = cause;
         this.locality = locality;
         this.imageUrl = imageUrl;
     }
 
-    public String getId() {
-        return id;
+
+    public String getLocation() {
+        return location;
     }
 
     public String getDate() {

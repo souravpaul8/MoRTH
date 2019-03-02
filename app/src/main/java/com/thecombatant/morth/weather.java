@@ -2,7 +2,7 @@ package com.thecombatant.morth;
 
 public class weather {
 
-    String id;
+    String location;
     String date;
     Double rainInMM;
     String cause;
@@ -12,16 +12,16 @@ public class weather {
 
     }
 
-    public weather(String id, String date, Double rainInMM, String cause, String locality) {
-        this.id = id;
+    public weather(String location, String date, Double rainInMM, String cause, String locality) {
+        this.location = location;
         this.date = date;
         this.rainInMM = rainInMM;
         this.cause = cause;
         this.locality = locality;
     }
 
-    public String getId() {
-        return id;
+    public String getLocation() {
+        return location;
     }
 
     public String getDate() {

@@ -570,7 +570,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
                     String id = databaseweather.push().getKey();
 
-                    weather weath = new weather(id, cdate, rainfall, cause, result);
+                    weather weath = new weather(latLngString, cdate, rainfall, cause, result);
 
                     databaseweather.child("Dates").child(cdate).setValue(weath);
 
@@ -634,7 +634,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
                     String id = databaseweather.push().getKey();
 
-                    Wind weath = new Wind(id, cdate, datap, cause, result);
+                    Wind weath = new Wind(latLngString, cdate, datap, cause, result);
 
                     databaseweather.child("Dates").child(cdate).setValue(weath);
 
@@ -695,7 +695,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
                 String id = databaseweather.push().getKey();
 
-                Temperature temperature = new Temperature(id, cdate, TempC, cause, result);
+                Temperature temperature = new Temperature(latLngString, cdate, TempC, cause, result);
 
                 databaseweather.child("Dates").child(cdate).setValue(temperature);
 
@@ -756,7 +756,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
                     String id = databaseweather.push().getKey();
 
-                OtherReasonDetails other = new OtherReasonDetails(id, cdate, otherReason, result, photoStringLink);
+                OtherReasonDetails other = new OtherReasonDetails(latLngString, cdate, otherReason, result, photoStringLink);
 
                 databaseweather.child("Dates").child(cdate).setValue(other);
 

@@ -2,7 +2,7 @@ package com.thecombatant.morth;
 
 public class Temperature {
 
-    String id;
+    String location;
     String date;
     int temperature;
     String cause;
@@ -12,16 +12,16 @@ public class Temperature {
 
     }
 
-    public Temperature(String id, String date, int temperature, String cause, String locality) {
-        this.id = id;
+    public Temperature(String location, String date, int temperature, String cause, String locality) {
+        this.location = location;
         this.date = date;
         this.temperature = temperature;
         this.cause = cause;
         this.locality = locality;
     }
 
-    public String getId() {
-        return id;
+    public String getLocation() {
+        return location;
     }
 
     public String getDate() {
