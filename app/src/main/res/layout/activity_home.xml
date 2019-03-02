@@ -17,9 +17,18 @@
         android:topRightRadius="10dp" />
 
     <Button
+        android:id="@+id/track"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/weatherRelatedHindrances"
         android:layout_centerHorizontal="true"
         android:text="Track Extension Request" />
+
+    <Button
+        android:id="@+id/viewSavedData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/track"
+        android:layout_centerHorizontal="true"
+        android:text="View Saved Data" />
 </RelativeLayout>

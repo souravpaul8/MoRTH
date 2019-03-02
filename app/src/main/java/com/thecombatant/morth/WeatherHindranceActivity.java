@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -118,6 +119,8 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
     private List<String> fileNameList;
     private List<String> fileDoneList;
     TextView Select_file;
+
+    String photoStringLink;
 
 
     String tender;
@@ -410,8 +413,18 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
                             fileDoneList.add(finalI, "done");
 
                             uploadListAdapter.notifyDataSetChanged();
+
+                            Task<Uri> result = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+                            result.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    photoStringLink = uri.toString();
+
+                                }
+                            });
                         }
                     });
+
 
 
                 }
@@ -440,6 +453,15 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
                             fileDoneList.add(finalI, "done");
 
                             uploadListAdapter.notifyDataSetChanged();
+
+                            Task<Uri> result = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+                            result.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    photoStringLink = uri.toString();
+
+                                }
+                            });
                         }
                     });
 
@@ -661,7 +683,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
                     String id = databaseweather.push().getKey();
 
-                    OtherReasonDetails other=new OtherReasonDetails(id,cdate,otherReason,result);
+                OtherReasonDetails other = new OtherReasonDetails(id, cdate, otherReason, result, photoStringLink);
 
                     databaseweather.child("Reason").child(cdate).setValue(other);
 

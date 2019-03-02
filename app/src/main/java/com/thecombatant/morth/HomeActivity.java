@@ -10,6 +10,7 @@ import android.widget.Toast;
 public class HomeActivity extends AppCompatActivity {
 
     Button WeatherRelatedHindrances;
+    Button ViewSavedData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         final String enddateofProject = getIntent().getStringExtra("enddateProject");
 
         WeatherRelatedHindrances = findViewById(R.id.weatherRelatedHindrances);
+        ViewSavedData = findViewById(R.id.viewSavedData);
 
         WeatherRelatedHindrances.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +37,15 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+
+        ViewSavedData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, SavedHindrancesListActivity.class);
+                i.putExtra("Tender_01", tender);
+                startActivity(i);
+            }
+        });
 
     }
 }
