@@ -20,6 +20,7 @@ public class HomeActivity extends AppCompatActivity {
         final String tender = getIntent().getStringExtra("Tender_01");
         final String startdateofProject = getIntent().getStringExtra("startdateProject");
         final String enddateofProject = getIntent().getStringExtra("enddateProject");
+        final String registername = getIntent().getStringExtra("registername");
 
         WeatherRelatedHindrances = findViewById(R.id.weatherRelatedHindrances);
         ViewSavedData = findViewById(R.id.viewSavedData);
@@ -33,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
                 i.putExtra("Tender_01", tender);
                 i.putExtra("startdateProject", startdateofProject);
                 i.putExtra("enddateProject", enddateofProject);
+                i.putExtra("registername", registername);
                 startActivity(i);
             }
         });

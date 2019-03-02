@@ -26,12 +26,15 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
 
     Button next;
     TextView tenderIdTextView;
+    EditText registerName;
     TextView StartDateofpro;
     TextView EndDateofpro;
     String GetTenderId;
     String Prodate;
     String ProjectStart;
     String ProjectEnd;
+    String nameregistered;
+
 
 
     DatePickerDialog.OnDateSetListener startDateProject;
@@ -44,10 +47,13 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_tender_details);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         StartDateofpro=findViewById(R.id.startDate);
         EndDateofpro=findViewById(R.id.enddate);
         next=findViewById(R.id.nextHome);
         tenderIdTextView = findViewById(R.id.TenderIdtextView);
+        registerName = findViewById(R.id.RegisteredName);
 
         final String tender = getIntent().getStringExtra("Tender_ID");
         tenderIdTextView.setText(tender);
@@ -253,14 +259,16 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
 
                  ProjectStart=StartDateofpro.getText().toString();
                  ProjectEnd=EndDateofpro.getText().toString();
+                nameregistered = registerName.getText().toString();
 
 
                 Intent intent=new Intent(EnterTenderDetailsActivity.this,HomeActivity.class);
                 intent.putExtra("Tender_01", tender);
                 intent.putExtra("startdateProject", ProjectStart);
                 intent.putExtra("enddateProject", ProjectEnd);
+                intent.putExtra("registername", nameregistered);
                 startActivity(intent);
-                //Toast.makeText(EnterTenderDetailsActivity.this, ProjectStart, Toast.LENGTH_SHORT).show();
+                Toast.makeText(EnterTenderDetailsActivity.this, "Thank You for registering on the MoRTH Project Deadline Extension App", Toast.LENGTH_LONG).show();
 
 
             }

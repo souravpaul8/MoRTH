@@ -34,6 +34,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
 
@@ -125,6 +126,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
     String tender;
     String startdateofProject;
     String enddateofProject;
+    String registeredname;
 
 
 
@@ -136,6 +138,8 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_hindrance);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         getLocation = findViewById(R.id.getLocation);
@@ -152,6 +156,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         tender = getIntent().getStringExtra("Tender_01");
         startdateofProject = getIntent().getStringExtra("startdateProject");
         enddateofProject = getIntent().getStringExtra("enddateProject");
+        registeredname = getIntent().getStringExtra("registername");
 
 
         FirebaseApp.initializeApp(this);
@@ -159,6 +164,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         databaseweather.child("Start date of project").setValue(startdateofProject);
         databaseweather.child("end date of project").setValue(enddateofProject);
         databaseweather.child("tender_id").setValue(tender);
+        databaseweather.child("Registered Name").setValue(registeredname);
 
         mStorage = FirebaseStorage.getInstance().getReference();
 
@@ -354,7 +360,10 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
             public void onClick(View v) {
 
 
+                Calendar calendar = Calendar.getInstance();
+                String currentdate = DateFormat.getDateInstance().format(calendar.getTime());
 
+                Toast.makeText(WeatherHindranceActivity.this, currentdate, Toast.LENGTH_SHORT).show();
 
                 if (text.equals("Rain")) {
 

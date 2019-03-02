@@ -217,7 +217,7 @@
             android:background="@drawable/custom_linear_layout_border"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
-            android:text="Next"
+            android:text="Register"
             android:textColor="#000000"
             android:textSize="25dp" />
 
