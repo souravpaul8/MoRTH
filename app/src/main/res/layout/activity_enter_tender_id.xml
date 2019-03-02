@@ -35,6 +35,7 @@
         android:paddingRight="64dp"
         android:textColor="#000000" />
 
+
     <Button
         android:id="@+id/buttonGo"
         android:layout_width="wrap_content"
@@ -42,6 +43,8 @@
         android:layout_gravity="center"
         android:background="@drawable/custom_linear_layout_border"
         android:text="Go"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
         android:textColor="#000000" />
 
 </LinearLayout>

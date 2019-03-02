@@ -3,6 +3,7 @@ package com.thecombatant.morth;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,13 +35,16 @@ public class EnterTenderIDActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 tenderId=enterTenderId.getText().toString();
-               Intent i = new Intent(EnterTenderIDActivity.this, EnterTenderDetailsActivity.class);
-                i.putExtra("Tender_ID", tenderId);
-               startActivity(i);
+                if (TextUtils.isEmpty(tenderId.trim())) {
+                    Toast.makeText(EnterTenderIDActivity.this, "Please enter Tender Id", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent i = new Intent(EnterTenderIDActivity.this, EnterTenderDetailsActivity.class);
+                    i.putExtra("Tender_ID", tenderId);
+                    startActivity(i);
 
-                //Toast.makeText(EnterTenderIDActivity.this,getName(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(EnterTenderIDActivity.this,getName(), Toast.LENGTH_SHORT).show();
 
-
+                }
             }
         });
 

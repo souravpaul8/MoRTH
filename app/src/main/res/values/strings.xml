@@ -59,8 +59,8 @@
     <string-array name="Causes">
         <item>Rain</item>
         <item>Wind</item>
+        <item>Unsuitable Temperature</item>
         <item>Snow</item>
-        <item>Landslide</item>
         <item>Others</item>
     </string-array>
 </resources>

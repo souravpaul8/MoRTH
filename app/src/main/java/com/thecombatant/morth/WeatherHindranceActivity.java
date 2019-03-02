@@ -118,7 +118,6 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
     private RecyclerView mUploadList;
     private List<String> fileNameList;
     private List<String> fileDoneList;
-    TextView Select_file;
 
     String photoStringLink;
 
@@ -159,12 +158,12 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference(tender);
         databaseweather.child("Start date of project").setValue(startdateofProject);
         databaseweather.child("end date of project").setValue(enddateofProject);
+        databaseweather.child("tender_id").setValue(tender);
 
         mStorage = FirebaseStorage.getInstance().getReference();
 
         mSelectBtn = findViewById(R.id.select_btn);
         mUploadList = findViewById(R.id.upload_list);
-        Select_file=findViewById(R.id.select_file);
 
         fileNameList = new ArrayList<>();
         fileDoneList = new ArrayList<>();
@@ -334,12 +333,10 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
                 if (text.equals("Others")) {
                     othercauses.setVisibility(view.VISIBLE);    //for other reasons
                     mSelectBtn.setVisibility(view.VISIBLE);
-                    Select_file.setVisibility(view.VISIBLE);
                     mUploadList.setVisibility(view.VISIBLE);
                 } else {
                     mSelectBtn.setVisibility(view.INVISIBLE);
                     othercauses.setVisibility(view.GONE);
-                    Select_file.setVisibility(view.GONE);
                     mUploadList.setVisibility(view.GONE);
                 }
             }
@@ -366,8 +363,9 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
                 } else if (text.equals("Wind")) {
 
                     searchwind();
-                }
-                else if(text.equals("Others")){
+                } else if (text.equals("Unsuitable Temperature")) {
+                    temp();
+                } else if (text.equals("Others")) {
                     otherCauseDetail();
                 }
 
@@ -619,7 +617,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
                 String cause = "Wind";
 
-                if (datap > 5) {
+                if (datap > 40) {
 
                     String id = databaseweather.push().getKey();
 
@@ -630,6 +628,66 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
                 }
 
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void temp() {
+        otherReason = othercauses.getText().toString();
+
+
+        String sdate = date.getText().toString();
+
+        String edate = enddate.getText().toString();
+
+        DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference(tender);
+
+
+        String content;
+        Hindrance weather = new Hindrance();
+
+        try {
+            content = weather.execute("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=168c1c9492f0485c9c440414192602&q=" + latLngString + "&format=json&date=" + sdate + "&enddate=" + edate + "&tp=12").get();
+
+            //Toast.makeText(WeatherHindranceActivity.this, "Rain", Toast.LENGTH_SHORT).show();
+
+
+            //JSON
+
+            JSONObject jobj = new JSONObject(content);
+
+            JSONObject j = jobj.getJSONObject("data");
+
+            JSONArray o = j.getJSONArray("weather");
+
+            for (int i = 0; i < o.length(); i++) {
+
+                JSONObject b = o.getJSONObject(i);
+
+                JSONArray jo = b.getJSONArray("hourly");
+
+                JSONObject job = jo.getJSONObject(0);
+
+                int TempC = job.getInt("tempC");
+
+                String cdate = b.getString("date");
+
+                String cause = "Temperature";
+
+
+                String id = databaseweather.push().getKey();
+
+                Temperature temperature = new Temperature(id, cdate, TempC, cause, result);
+
+                databaseweather.child("Dates").child(cdate).setValue(temperature);
+
+
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();

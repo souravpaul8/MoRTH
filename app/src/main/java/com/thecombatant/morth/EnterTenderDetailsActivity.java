@@ -26,7 +26,6 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
 
     Button next;
     TextView tenderIdTextView;
-    EditText TenderId;
     TextView StartDateofpro;
     TextView EndDateofpro;
     String GetTenderId;
@@ -44,13 +43,10 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_tender_details);
 
-        TenderId=findViewById(R.id.tenderId);
         StartDateofpro=findViewById(R.id.startDate);
         EndDateofpro=findViewById(R.id.enddate);
         next=findViewById(R.id.nextHome);
         tenderIdTextView = findViewById(R.id.TenderIdtextView);
-
-        GetTenderId=TenderId.getText().toString();
 
         final String tender = getIntent().getStringExtra("Tender_ID");
         tenderIdTextView.setText(tender);
