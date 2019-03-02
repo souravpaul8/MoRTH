@@ -1,60 +1,166 @@
 <resources>
     <string name="app_name">MoRTH</string>
     <string name="start_date">Start Date of Project</string>
-    <string-array name="year">
-        <item name="">2000</item>
-        <item name="">2001</item>
-        <item name="">2002</item>
-        <item name="">2003</item>
-        <item name="">2004</item>
-        <item name="">2005</item>
-        <item name="">2006</item>
+    <string-array name="india_states">
+        <item>Jharkhand</item>
+        <item>Odishaa</item>
+        <item>Gujarat</item>
+        <item>Rajasthan</item>
+        <item>Tamil Nadu</item>
+        <item>Andaman and Nicobar Islands</item>
+        <item>Andhra Pradesh</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Chandigarh</item>
+        <item>Chhattisgarh</item>
+        <item>Dadra and Nagar Haveli</item>
+        <item>Daman and Diu</item>
+        <item>Delhi</item>
+        <item>Goa</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu and Kashmir</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Lakshadweep</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Bihar</item>
+        <item>Pondicherry</item>
+        <item>Punjab</item>
+        <item>Sikkim</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttaranchal</item>
+        <item>Uttar Pradesh</item>
+        <item>West Bengal</item>
     </string-array>
-    <string-array name="month">
-        <item name="">January</item>
-        <item name="">February</item>
-        <item name="">March</item>
-        <item name="">April</item>
-        <item name="">May</item>
-        <item name="">june</item>
-        <item name="">July</item>
-        <item name="">August</item>
-        <item name="">September</item>
-        <item name="">October</item>
-        <item name="">November</item>
-        <item name="">December</item>
+
+    <string-array name="jharkhand">
+        <item>East Singhbhum</item>
+        <item> West Singhbhum</item>
+        <item>Palamu</item>
+        <item>Latehar</item>
+        <item>Chatra</item>
+        <item> Hazaribagh</item>
+        <item>Giridih</item>
+        <item>Ramgarh</item>
+        <item>Bokaro</item>
+        <item>Dhanbad district</item>
+        <item>Lohardaga</item>
+        <item>Gumla</item>
+        <item>Simdega</item>
+        <item>Ranchi</item>
+        <item>Khunti</item>
+        <item>Koderma</item>
+        <item>Saraikela Kharsawan</item>
+        <item>Garwaha</item>
+        <item>Jamtara</item>
+        <item>Deoghar</item>
+        <item>Dumka</item>
+        <item>Pakur</item>
+        <item> Godda</item>
+        <item>Sahebganj</item>
     </string-array>
-    <string-array name="date">
-        <item name="">1</item>
-        <item name="">2</item>
-        <item name="">3</item>
-        <item name="">4</item>
-        <item name="">5</item>
-        <item name="">28</item>
+
+    <string-array name="bihar">
+        <item>Araria</item>
+        <item>Arwal</item>
+        <item>Aurangabad</item>
+        <item>Banka</item>
+        <item>Begusarai</item>
+        <item>Bhagalpur</item>
+        <item>Bhojpur</item>
+        <item>Buxar</item>
+        <item>Darbhanga</item>
+        <item>Araria</item>
+        <item>Arwal</item>
+        <item>Aurangabad</item>
+        <item>Banka</item>
+        <item>Begusarai</item>
+        <item>Bhagalpur</item>
+        <item>Bhojpur</item>
+        <item>Buxar</item>
+        <item>Darbhanga</item>
     </string-array>
-    <string-array name="date1">
-        <item name="">1</item>
-        <item name="">2</item>
-        <item name="">3</item>
-        <item name="">4</item>
-        <item name="">5</item>
-        <item name="">29</item>
+    <string-array name="Khordha">
+        <item>Bhubaneswar</item>
+        <item>Jatani</item>
+        <item>Kaipadar</item>
+        <item>Dalatola</item>
+        <item>jajapur</item>
+        <item>balangir</item>
+        <item>Mayurbhaj</item>
+
+
     </string-array>
-    <string-array name="date2">
-        <item name="">1</item>
-        <item name="">2</item>
-        <item name="">3</item>
-        <item name="">4</item>
-        <item name="">5</item>
-        <item name="">30</item>
+    <string-array name="odisha">
+        <item>Khordha</item>
+        <item>Cuttack</item>
+        <item>puri</item>
+        <item>kendrapara</item>
+        <item>jajapur</item>
+        <item>balangir</item>
+        <item>Mayurbhaj</item>
+
     </string-array>
-    <string-array name="date3">
-        <item name="">1</item>
-        <item name="">2</item>
-        <item name="">3</item>
-        <item name="">4</item>
-        <item name="">5</item>
-        <item name="">31</item>
+    <string-array name="Cuttack">
+        <item>patapur</item>
+        <item>Balikuda</item>
+        <item>Phulnkhara</item>
+        <item>Trisulia</item>
+
+    </string-array>
+
+
+    <string-array name="gujrat">
+        <item> Ahmedabad</item>
+        <item>Vadodara</item>
+        <item> Anand</item>
+        <item>Chhota Udaipur</item>
+        <item> Dahod</item>
+        <item>Chhota Udaipur</item>
+        <item>  Dahod</item>
+        <item> Kheda</item>
+        <item>Mahisagar</item>
+        <item> Panchmahal</item>
+    </string-array>
+
+    <string-array name="rajasthan">
+        <item> Ajmer</item>
+        <item>Alwar</item>
+        <item>Banswara</item>
+        <item>Baran</item>
+        <item>Barmer</item>
+        <item>Bharatpur</item>
+    </string-array>
+
+    <string-array name="tamilnadu">
+        <item>Ariyalur</item>
+        <item>Chennai</item>
+        <item>Cuddalore</item>
+        <item>Dharmapuri</item>
+        <item>Dindigul</item>
+        <item></item>
+    </string-array>
+    <string-array name="eastSinghbhum">
+        <item>sakchi</item>
+        <item>bistupur</item>
+        <item>golmuri</item>
+        <item>telco</item>
+    </string-array>
+
+
+    <string-array name="westSinghbhum">
+        <item>chaibasa</item>
+        <item>chakradharpur</item>
+        <item>Bhoya</item>
+        <item>Tatnanagar</item>
+
     </string-array>
     <string-array name="Causes">
         <item>Rain</item>
