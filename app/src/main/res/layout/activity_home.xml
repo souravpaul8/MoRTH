@@ -23,7 +23,7 @@
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:background="@drawable/custom_linear_layout_border"
-        android:text="Weather Related Hindrances"
+        android:text="ADD Hindrances"
         android:topLeftRadius="10dp"
         android:topRightRadius="10dp" />
 

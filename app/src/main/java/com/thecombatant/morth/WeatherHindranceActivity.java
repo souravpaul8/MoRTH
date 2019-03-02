@@ -361,9 +361,10 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
 
                 Calendar calendar = Calendar.getInstance();
-                String currentdate = DateFormat.getDateInstance().format(calendar.getTime());
+                String currentdate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
-                Toast.makeText(WeatherHindranceActivity.this, currentdate, Toast.LENGTH_SHORT).show();
+
+                //Toast.makeText(WeatherHindranceActivity.this, currentdate, Toast.LENGTH_SHORT).show();
 
                 if (text.equals("Rain")) {
 
@@ -384,7 +385,9 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
        extension.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               openDialog();
+               Intent intent = new Intent(WeatherHindranceActivity.this, ExtensionDays.class);
+               intent.putExtra("tenderId", tender);
+               startActivity(intent);
            }
        });
 
@@ -576,6 +579,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
 
             }
+            Toast.makeText(this, "Successfully updated your request", Toast.LENGTH_SHORT).show();
 
 
         } catch (Exception e) {
@@ -637,6 +641,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
                 }
 
             }
+            Toast.makeText(this, "Successfully updated your request", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -697,6 +702,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
             }
 
+            Toast.makeText(this, "Successfully updated your request", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -752,12 +758,13 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
                 OtherReasonDetails other = new OtherReasonDetails(id, cdate, otherReason, result, photoStringLink);
 
-                    databaseweather.child("Reason").child(cdate).setValue(other);
+                databaseweather.child("Dates").child(cdate).setValue(other);
 
 
 
             }
 
+            Toast.makeText(this, "Successfully updated your request", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
             e.printStackTrace();
