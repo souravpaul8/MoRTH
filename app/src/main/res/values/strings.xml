@@ -62,5 +62,6 @@
         <item>Unsuitable Temperature</item>
         <item>Snow</item>
         <item>Others</item>
+        <item>Temperature</item>
     </string-array>
 </resources>

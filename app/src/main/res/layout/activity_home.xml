@@ -1,44 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00AFF0"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeActivity">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="7dp"
-        android:elevation="200dp"
-        android:orientation="vertical"
-        app:cardCornerRadius="8dp">
 
-    </android.support.v7.widget.CardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="250dp"
+        android:orientation="vertical">
+
     <Button
         android:id="@+id/weatherRelatedHindrances"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:bottomLeftRadius="10dp"
-        android:bottomRightRadius="10dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="@drawable/custom_linear_layout_border"
         android:text="Weather Related Hindrances"
         android:topLeftRadius="10dp"
         android:topRightRadius="10dp" />
 
     <Button
         android:id="@+id/track"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/weatherRelatedHindrances"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="@drawable/custom_linear_layout_border"
         android:text="Track Extension Request" />
 
     <Button
         android:id="@+id/viewSavedData"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/track"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="@drawable/custom_linear_layout_border"
         android:text="View Saved Data" />
-</RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -41,6 +41,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:textColor="#000000"
                     android:inputType="textPersonName"
                     android:paddingLeft="40dp"
                     android:text="Your Location"
@@ -74,10 +75,11 @@
                 <TextView
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="50"
                     android:gravity="center"
-                    android:hint="Start Date"
+                    android:text="Start Date"
+                    android:textColor="#000000"
                     android:inputType="textPersonName"
                     android:textSize="20sp"
 
@@ -90,9 +92,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="50"
                     android:gravity="center"
-                    android:hint="end date"
+                    android:text="End date"
+                    android:textColor="#000000"
                     android:inputType="textPersonName"
-                    android:text="End Date"
                     android:textSize="20sp"
                     tools:layout_editor_absoluteX="213dp"
                     tools:layout_editor_absoluteY="72dp" />
