@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MoRTH</string>
     <string name="start_date">Start Date of Project</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
     <string-array name="india_states">
         <item>Jharkhand</item>
         <item>Odishaa</item>
