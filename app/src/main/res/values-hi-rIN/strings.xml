@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MoRTH</string>
+    <string name="GoButton">आगे</string>
+    <string name="EnterRegisteredNameText">पंजीकृत नाम दर्ज करें</string>
+    <string name="EndDateOfProject">परियोजना की अंतिम तिथि</string>
+    <string name="StartLocation">प्रारंभ स्थान</string>
+    <string name="EndLocation">समाप्त स्थान</string>
+    <string name="Register">रजिस्टर</string>
+    <string name="TenderID">निविदा संख्या</string>
+    <string name="WeatherRelatedHindrances">मौसम संबंधी हिंडन</string>
+    <string name="TrackExtensionRequest">ट्रैक एक्सटेंशन अनुरोध</string>
+    <string name="ViewSavedData">सहेजे गए डेटा देखें</string>
+    <string name="YourLocation">वर्तमान स्थान</string>
+    <string name="StartDate">आरंभ करने की तिथि</string>
+    <string name="EndDate">अंतिम तिथि</string>
+    <string name="Rain">बारिश</string>
+    <string name="Wind">हवा</string>
+    <string name="UnsuitableHindrances">अनुपयोगी हिंडन</string>
+    <string name="Save">सहेजें</string>
+    <string name="Jharkhand">झारखंड</string>
+    <string name="Bihar">बिहार</string>
+</resources>

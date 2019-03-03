@@ -1,5 +1,4 @@
 package com.thecombatant.morth;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -26,6 +25,7 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
 
     Button next;
     TextView tenderIdTextView;
+
     EditText registerName;
     TextView StartDateofpro;
     TextView EndDateofpro;
@@ -65,14 +65,15 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
 
         ArrayAdapter<CharSequence> ada = ArrayAdapter.createFromResource(this, R.array.india_states, android.R.layout.simple_spinner_item);
         final ArrayAdapter<CharSequence> ada0 = ArrayAdapter.createFromResource(this, R.array.jharkhand, android.R.layout.simple_spinner_item);
-        final ArrayAdapter<CharSequence> ada1 = ArrayAdapter.createFromResource(this, R.array.odisha, android.R.layout.simple_spinner_item);
+        final ArrayAdapter<CharSequence> ada1 = ArrayAdapter.createFromResource(this, R.array.Odisha, android.R.layout.simple_spinner_item);
         final ArrayAdapter<CharSequence> ada2 = ArrayAdapter.createFromResource(this, R.array.bihar, android.R.layout.simple_spinner_item);
-        final ArrayAdapter<CharSequence> ada3 = ArrayAdapter.createFromResource(this, R.array.rajasthan, android.R.layout.simple_spinner_item);
+        final ArrayAdapter<CharSequence> ada3 = ArrayAdapter.createFromResource(this, R.array.Rajasthan, android.R.layout.simple_spinner_item);
         final ArrayAdapter<CharSequence> ada4 = ArrayAdapter.createFromResource(this, R.array.tamilnadu, android.R.layout.simple_spinner_item);
-        final ArrayAdapter<CharSequence> ad5 = ArrayAdapter.createFromResource(this, R.array.eastSinghbhum, android.R.layout.simple_spinner_item);
+        final ArrayAdapter<CharSequence> ad5 = ArrayAdapter.createFromResource(this, R.array.EastSinghbhum, android.R.layout.simple_spinner_item);
         final ArrayAdapter<CharSequence> ad6 = ArrayAdapter.createFromResource(this, R.array.westSinghbhum, android.R.layout.simple_spinner_item);
         final ArrayAdapter<CharSequence> ad7 = ArrayAdapter.createFromResource(this, R.array.Khordha, android.R.layout.simple_spinner_item);
         final ArrayAdapter<CharSequence> ad8 = ArrayAdapter.createFromResource(this, R.array.Cuttack, android.R.layout.simple_spinner_item);
+        final ArrayAdapter<CharSequence> ad9 = ArrayAdapter.createFromResource(this, R.array.Puri, android.R.layout.simple_spinner_item);
         ada.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         ada0.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         ada1.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
@@ -83,6 +84,7 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
         ad6.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         ad7.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         ad8.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        ad9.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         stateStart.setAdapter(ada);
         stateEnd.setAdapter(ada);
         stateStart.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -140,6 +142,10 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
                                             case 1:
                                                 startLocality.setAdapter(ad8);
                                                 break;
+                                            case 2:
+                                                startLocality.setAdapter(ad9);
+                                                break;
+
                                         }
                                     }
                                 }
@@ -219,6 +225,10 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
                                             case 1:
                                                 endLocality.setAdapter(ad8);
                                                 break;
+                                            case 2:
+                                                endLocality.setAdapter(ad9);
+                                                break;
+
                                         }
                                     }
 
@@ -269,7 +279,6 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
                 intent.putExtra("registername", nameregistered);
                 startActivity(intent);
                 Toast.makeText(EnterTenderDetailsActivity.this, "Thank You for registering on the MoRTH Project Deadline Extension App", Toast.LENGTH_LONG).show();
-
 
             }
         });
@@ -339,12 +348,5 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
 
             }
         };
-
-
-
-
     }
-
-
-
 }

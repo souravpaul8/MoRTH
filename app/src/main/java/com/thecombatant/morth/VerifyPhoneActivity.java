@@ -3,7 +3,7 @@ package com.thecombatant.morth;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-//import android.support.design.widget.Snackbar;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -141,14 +141,14 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                                 message = "Invalid code entered...";
                             }
 
-                           /* Snackbar snackbar = Snackbar.make(findViewById(R.id.parent), message, Snackbar.LENGTH_LONG);
+                            Snackbar snackbar = Snackbar.make(findViewById(R.id.parent), message, Snackbar.LENGTH_LONG);
                             snackbar.setAction("Dismiss", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
 
                                 }
                             });
-                            snackbar.show();*/
+                            snackbar.show();
                         }
                     }
                 });
