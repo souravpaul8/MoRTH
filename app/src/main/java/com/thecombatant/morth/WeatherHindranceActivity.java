@@ -158,6 +158,14 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         enddateofProject = getIntent().getStringExtra("enddateProject");
         registeredname = getIntent().getStringExtra("registername");
 
+        String StartStateLocation = getIntent().getStringExtra("StartStateLocation");
+        String StartDistrictLocation = getIntent().getStringExtra("StartDistrictLocation");
+        String EndDistrictLocation = getIntent().getStringExtra("EndDistrictLocation");
+        String EndStateLocation = getIntent().getStringExtra("EndStateLocation");
+        String Contact1 = getIntent().getStringExtra("Contact1");
+        String Contact2 = getIntent().getStringExtra("Contact2");
+
+
 
         FirebaseApp.initializeApp(this);
         DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference(tender);
@@ -166,7 +174,13 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         databaseweather.child("tender_id").setValue(tender);
         databaseweather.child("Registered Name").setValue(registeredname);
 
+        databaseweather.child("Start Location Of Project").setValue(StartStateLocation + "/" + StartDistrictLocation);
+        databaseweather.child("End Location Of Project").setValue(EndStateLocation + "/" + EndDistrictLocation);
+        databaseweather.child("Contact of localite1").setValue(Contact1);
+        databaseweather.child("Contact of localite2").setValue(Contact2);
+
         mStorage = FirebaseStorage.getInstance().getReference();
+
 
         mSelectBtn = findViewById(R.id.select_btn);
         mUploadList = findViewById(R.id.upload_list);
