@@ -511,7 +511,6 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
     }
 
-
     public String getFileName(Uri uri) {
         String result = null;
         if (uri.getScheme().equals("content")) {
