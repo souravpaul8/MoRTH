@@ -24,7 +24,7 @@ import com.google.firebase.database.Query;
 public class SavedHindrancesListActivity extends AppCompatActivity {
 
     private RecyclerView mHindranceRV;
-    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabase, mDatabaseRef;
     private FirebaseRecyclerAdapter<
             SavedHindranceData, SavedHindrancesListActivity.HindranceViewHolder> mHindranceRVAdapter;
 
@@ -35,7 +35,8 @@ public class SavedHindrancesListActivity extends AppCompatActivity {
 
         final String tender = getIntent().getStringExtra("Tender_01");
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child(tender).child("Dates");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child(tender);
+        mDatabase = mDatabaseRef.child("Dates");
         mDatabase.keepSynced(true);
 
         mHindranceRV = findViewById(R.id.savedHindrancesRecyclerView);
@@ -52,8 +53,8 @@ public class SavedHindrancesListActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull SavedHindrancesListActivity.HindranceViewHolder holder, final int position, @NonNull final SavedHindranceData model) {
                 holder.setDate(model.getDate());
-                holder.setLocation(model.getLocation());
-                holder.setReason(model.getReason());
+                holder.setLocation(model.getLocality());
+                holder.setReason(model.getCause());
 
             }
 
@@ -93,18 +94,18 @@ public class SavedHindrancesListActivity extends AppCompatActivity {
         }
 
         public void setDate(String datePar) {
-            TextView date = (TextView) mView.findViewById(R.id.date);
+            TextView date = mView.findViewById(R.id.date);
             date.setText(datePar);
         }
 
         public void setLocation(String locPar) {
-            TextView location = (TextView) mView.findViewById(R.id.location);
+            TextView location = mView.findViewById(R.id.location);
             location.setText(locPar);
         }
 
         public void setReason(String reasPar) {
 
-            TextView reason = (TextView) mView.findViewById(R.id.reason);
+            TextView reason = mView.findViewById(R.id.reason);
             reason.setText(reasPar);
         }
 

@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ExtensionDays"></activity>
+        <activity android:name=".VerifyPhoneActivity"></activity>
+        <activity android:name=".PhoneLogin" />
+        <activity android:name=".ExtensionDays" />
         <activity android:name=".SavedHindrancesListActivity" />
         <activity android:name=".OtherUploadActivity" />
         <activity

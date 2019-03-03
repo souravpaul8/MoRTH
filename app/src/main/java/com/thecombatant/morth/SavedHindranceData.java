@@ -3,13 +3,17 @@ package com.thecombatant.morth;
 public class SavedHindranceData {
 
     private String date;
-    private String location;
-    private String reason;
+    private String locality;
+    private String cause;
 
-    public SavedHindranceData(String date, String location, String reason) {
+    public SavedHindranceData() {
+
+    }
+
+    public SavedHindranceData(String date, String locality, String cause) {
         this.date = date;
-        this.location = location;
-        this.reason = reason;
+        this.locality = locality;
+        this.cause = cause;
     }
 
     public String getDate() {
@@ -20,19 +24,19 @@ public class SavedHindranceData {
         this.date = date;
     }
 
-    public String getLocation() {
-        return location;
+    public String getLocality() {
+        return locality;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocality(String locality) {
+        this.locality = locality;
     }
 
-    public String getReason() {
-        return reason;
+    public String getCause() {
+        return cause;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setCause(String cause) {
+        this.cause = cause;
     }
 }

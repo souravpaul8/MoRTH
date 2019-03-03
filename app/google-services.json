@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "1017382709999-mibhn033s2jrnjs87krb8oev3p2bd5n4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thecombatant.morth",
+            "certificate_hash": "6a58d51af3fc1e4b03c02397a59cf9492354744c"
+          }
+        },
+        {
           "client_id": "1017382709999-97i8buhmupdtf6j2s7bnfch9s27d4qpo.apps.googleusercontent.com",
           "client_type": 3
         }
