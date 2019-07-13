@@ -31,6 +31,14 @@
           }
         },
         {
+          "client_id": "1017382709999-dt7m40kd9e68i5ji3oeguoe3pksu1oa4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thecombatant.morth",
+            "certificate_hash": "370e6e100bf66621848f3ec26ca305759fcd824e"
+          }
+        },
+        {
           "client_id": "1017382709999-97i8buhmupdtf6j2s7bnfch9s27d4qpo.apps.googleusercontent.com",
           "client_type": 3
         }

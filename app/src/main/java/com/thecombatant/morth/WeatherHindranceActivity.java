@@ -537,7 +537,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         Hindrance weather = new Hindrance();
 
         try {
-            content = weather.execute("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=168c1c9492f0485c9c440414192602&q=" + latLngString + "&format=json&date=" + sdate + "&enddate=" + edate + "&tp=12").get();
+            content = weather.execute("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=18a31859c6d6460b8d613009191006&q=" + latLngString + "&format=json&date=" + sdate + "&enddate=" + edate + "&tp=12").get();
 
             //Toast.makeText(WeatherHindranceActivity.this, "Rain", Toast.LENGTH_SHORT).show();
 
@@ -604,7 +604,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         Hindrance weather = new Hindrance();
 
         try {
-            content = weather.execute("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=168c1c9492f0485c9c440414192602&q=" + latLngString + "&format=json&date=" + sdate + "&enddate=" + edate + "&tp=24").get();
+            content = weather.execute("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=18a31859c6d6460b8d613009191006&q=" + latLngString + "&format=json&date=" + sdate + "&enddate=" + edate + "&tp=24").get();
 
 
             //JSON
@@ -665,7 +665,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         Hindrance weather = new Hindrance();
 
         try {
-            content = weather.execute("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=168c1c9492f0485c9c440414192602&q=" + latLngString + "&format=json&date=" + sdate + "&enddate=" + edate + "&tp=12").get();
+            content = weather.execute("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=18a31859c6d6460b8d613009191006&q=" + latLngString + "&format=json&date=" + sdate + "&enddate=" + edate + "&tp=12").get();
 
             //Toast.makeText(WeatherHindranceActivity.this, "Rain", Toast.LENGTH_SHORT).show();
 
@@ -727,7 +727,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         Hindrance weather = new Hindrance();
 
         try {
-            content = weather.execute("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=168c1c9492f0485c9c440414192602&q=" + latLngString + "&format=json&date=" + sdate + "&enddate=" + edate + "&tp=12").get();
+            content = weather.execute("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=18a31859c6d6460b8d613009191006&q=" + latLngString + "&format=json&date=" + sdate + "&enddate=" + edate + "&tp=12").get();
 
             //Toast.makeText(WeatherHindranceActivity.this, "Rain", Toast.LENGTH_SHORT).show();
             //Log.d("hitesh", content);
@@ -748,9 +748,6 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
                 String cdate = b.getString("date");
 
-
-
-                //Log.d("sourav", cdate);
 
 
 
