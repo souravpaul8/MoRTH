@@ -41,6 +41,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         final String enddateofProject = getIntent().getStringExtra("enddateProject");
         final String registername = getIntent().getStringExtra("registername");
 
+        final String StartStateLocation = getIntent().getStringExtra("StartStateLocation");
+        final String StartDistrictLocation = getIntent().getStringExtra("StartDistrictLocation");
+        final String EndDistrictLocation = getIntent().getStringExtra("EndDistrictLocation");
+        final String EndStateLocation = getIntent().getStringExtra("EndStateLocation");
+
+        final String Contact1 = getIntent().getStringExtra("ContactSite1");
+        final String Contact2 = getIntent().getStringExtra("ContactSite2");
+
         WeatherRelatedHindrances = findViewById(R.id.weatherRelatedHindrances);
         ViewSavedData = findViewById(R.id.viewSavedData);
 
@@ -54,6 +62,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 i.putExtra("startdateProject", startdateofProject);
                 i.putExtra("enddateProject", enddateofProject);
                 i.putExtra("registername", registername);
+                i.putExtra("StartStateLocation", StartStateLocation);
+                i.putExtra("StartDistrictLocation", StartDistrictLocation);
+                i.putExtra("EndDistrictLocation", EndDistrictLocation);
+                i.putExtra("EndStateLocation", EndStateLocation);
+                i.putExtra("Contact1", Contact1);
+                i.putExtra("Contact2", Contact2);
                 startActivity(i);
             }
         });

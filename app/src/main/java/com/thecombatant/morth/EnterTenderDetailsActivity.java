@@ -23,6 +23,7 @@ import java.util.Calendar;
 
 public class EnterTenderDetailsActivity extends AppCompatActivity {
 
+    String word, word1, districtWord, districtWord1;
     Button next;
     TextView tenderIdTextView;
 
@@ -35,7 +36,10 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
     String ProjectEnd;
     String nameregistered;
 
-
+    EditText contact1Edit;
+    EditText contact2Edit;
+    String contact1;
+    String contact2;
 
     DatePickerDialog.OnDateSetListener startDateProject;
     DatePickerDialog.OnDateSetListener endDateProject;
@@ -54,6 +58,8 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
         next=findViewById(R.id.nextHome);
         tenderIdTextView = findViewById(R.id.TenderIdtextView);
         registerName = findViewById(R.id.RegisteredName);
+        contact1Edit = findViewById(R.id.contactnumber1);
+        contact2Edit = findViewById(R.id.contactnumber2);
 
         final String tender = getIntent().getStringExtra("Tender_ID");
         tenderIdTextView.setText(tender);
@@ -91,7 +97,7 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 // Spinner s =  findViewById(R.id.spinnerStatestart);
-                String word = adapterView.getItemAtPosition(i).toString();
+                word = adapterView.getItemAtPosition(i).toString();
                 if (word.equals(word)) {
                     Spinner startDistrict = findViewById(R.id.spinnerDistrictstart);
 
@@ -102,7 +108,7 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                                    String districtWord = parent.getItemAtPosition(position).toString();
+                                    districtWord = parent.getItemAtPosition(position).toString();
                                     if (districtWord.equals(districtWord)) {
                                         Spinner startLocality = findViewById(R.id.spinnerLocalitystart);
                                         switch (position) {
@@ -132,7 +138,7 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                                    String districtWord = parent.getItemAtPosition(position).toString();
+                                    districtWord = parent.getItemAtPosition(position).toString();
                                     if (districtWord.equals(districtWord)) {
                                         Spinner startLocality = findViewById(R.id.spinnerLocalitystart);
                                         switch (position) {
@@ -180,7 +186,7 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
         stateEnd.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent1, View view, int position, long id) {
-                String word1 = parent1.getItemAtPosition(position).toString();
+                word1 = parent1.getItemAtPosition(position).toString();
                 if (word1.equals(word1)) {
                     Spinner endDistrict = findViewById(R.id.spinnerDistrictEnd);
                     switch (position) {
@@ -189,8 +195,8 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
                             endDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                    String districtWord = parent.getItemAtPosition(position).toString();
-                                    if (districtWord.equals(districtWord)) {
+                                    districtWord1 = parent.getItemAtPosition(position).toString();
+                                    if (districtWord1.equals(districtWord1)) {
                                         Spinner endLocality = findViewById(R.id.spinnerLocalityEnd);
                                         switch (position) {
                                             case 0:
@@ -215,8 +221,8 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
                             endDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                    String districtWord = parent.getItemAtPosition(position).toString();
-                                    if (districtWord.equals(districtWord)) {
+                                    districtWord1 = parent.getItemAtPosition(position).toString();
+                                    if (districtWord1.equals(districtWord1)) {
                                         Spinner endLocality = findViewById(R.id.spinnerLocalityEnd);
                                         switch (position) {
                                             case 0:
@@ -228,7 +234,6 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
                                             case 2:
                                                 endLocality.setAdapter(ad9);
                                                 break;
-
                                         }
                                     }
 
@@ -270,6 +275,9 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
                  ProjectStart=StartDateofpro.getText().toString();
                  ProjectEnd=EndDateofpro.getText().toString();
                 nameregistered = registerName.getText().toString();
+                contact1 = contact1Edit.getText().toString();
+                contact2 = contact2Edit.getText().toString();
+
 
 
                 Intent intent=new Intent(EnterTenderDetailsActivity.this,HomeActivity.class);
@@ -277,6 +285,14 @@ public class EnterTenderDetailsActivity extends AppCompatActivity {
                 intent.putExtra("startdateProject", ProjectStart);
                 intent.putExtra("enddateProject", ProjectEnd);
                 intent.putExtra("registername", nameregistered);
+                intent.putExtra("StartStateLocation", word);
+                intent.putExtra("StartDistrictLocation", districtWord);
+                intent.putExtra("EndDistrictLocation", districtWord1);
+                intent.putExtra("EndStateLocation", word1);
+                intent.putExtra("ContactSite1", contact1);
+                intent.putExtra("ContactSite2", contact2);
+
+
                 startActivity(intent);
                 Toast.makeText(EnterTenderDetailsActivity.this, "Thank You for registering on the MoRTH Project Deadline Extension App", Toast.LENGTH_LONG).show();
 

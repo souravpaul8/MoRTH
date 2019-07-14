@@ -71,13 +71,13 @@
             app:cardCornerRadius="8dp">
 
             <EditText
-                android:id="@+id/contactnumber"
+                android:id="@+id/contactnumber1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="12dp"
                 android:gravity="center"
-                android:hint="Enter Contact Number"
+                android:hint="Enter Site Engineer-I Phone Number"
                 android:textColor="#000000"
                 android:textSize="15sp" />
 
@@ -99,7 +99,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="12dp"
                 android:gravity="center"
-                android:hint="Enter Another Contact Number"
+                android:hint="Enter Site Engineer-II Phone Number"
                 android:textColor="#000000"
                 android:textSize="15sp" />
 
