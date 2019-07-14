@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -119,6 +120,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
     private RecyclerView mUploadList;
     private List<String> fileNameList;
     private List<String> fileDoneList;
+    ProgressBar progressBar;
 
     String photoStringLink;
 
@@ -149,6 +151,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         date = findViewById(R.id.date);
         enddate = findViewById(R.id.enddate);
         othercauses = findViewById(R.id.reason);
+        progressBar = findViewById(R.id.progress_circular);
         //x = findViewById(R.id.x);
 
 
@@ -335,6 +338,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 text = parent.getItemAtPosition(position).toString();
                 if (text.equals("Others")) {
                     othercauses.setVisibility(view.VISIBLE);    //for other reasons
@@ -360,29 +364,35 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
             public void onClick(View v) {
 
 
-                Calendar calendar = Calendar.getInstance();
-                String currentdate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-
-
+                // Calendar calendar = Calendar.getInstance();
+                // String currentdate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
                 //Toast.makeText(WeatherHindranceActivity.this, currentdate, Toast.LENGTH_SHORT).show();
 
                 if (text.equals("Rain")) {
 
 
                     searchrain();
+
                 } else if (text.equals("Wind")) {
 
                     searchwind();
+
                 } else if (text.equals("Unsuitable Temperature")) {
+
                     temp();
+
                 } else if (text.equals("Others")) {
+
                     otherCauseDetail();
                 }
 
+
             }
+
         });
 
-       extension.setOnClickListener(new View.OnClickListener() {
+
+        extension.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                Intent intent = new Intent(WeatherHindranceActivity.this, ExtensionDays.class);
@@ -522,12 +532,12 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
     public void searchrain() {
 
+
         String sdate = date.getText().toString();
 
         String edate = enddate.getText().toString();
 
       //  EnterTenderIDActivity ob=new EnterTenderIDActivity();
-
       //  String tender=tenderId;
 
         DatabaseReference databaseweather = FirebaseDatabase.getInstance().getReference(tender);
@@ -579,6 +589,7 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
 
 
             }
+
             Toast.makeText(this, "Successfully updated your request", Toast.LENGTH_SHORT).show();
 
 
@@ -822,6 +833,16 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
             }
 
             return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            progressBar.setVisibility(View.INVISIBLE);
         }
     }
 
