@@ -459,8 +459,6 @@ public class WeatherHindranceActivity extends AppCompatActivity implements Dialo
                         }
                     });
 
-
-
                 }
                 //Toast.makeText(UploadActivity.this, "Selected Multiple Files", Toast.LENGTH_LONG).show();
             } else if (data.getData() != null) {
